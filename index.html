@@ -6,39 +6,39 @@
 </head>
 <body>
     <div class="calculator">
-        <div class="display">
-            <input type="text" id="result" disabled>
-        </div>
-        <div class="buttons">
-            <div class="row">
-                <button onclick="insert('7')">7</button>
-                <button onclick="insert('8')">8</button>
-                <button onclick="insert('9')">9</button>
-                <button class="operator" onclick="insert('/')">÷</button>
-            </div>
-            <div class="row">
-                <button onclick="insert('4')">4</button>
-                <button onclick="insert('5')">5</button>
-                <button onclick="insert('6')">6</button>
-                <button class="operator" onclick="insert('*')">×</button>
-            </div>
-            <div class="row">
-                <button onclick="insert('1')">1</button>
-                <button onclick="insert('2')">2</button>
-                <button onclick="insert('3')">3</button>
-                <button class="operator" onclick="insert('-')">−</button>
-            </div>
-            <div class="row">
-                <button onclick="insert('0')">0</button>
-                <button onclick="insert('.')">.</button>
-                <button class="equals" onclick="calculate()">=</button>
-                <button class="operator" onclick="insert('+')">+</button>
-            </div>
-            <div class="row">
-                <button class="clear" onclick="clearInput()">Clear</button>
-            </div>
-        </div>
+        <input type="text" id="result" disabled>
+        <table>
+            <tr>
+                <td><button onclick="insert('7')">7</button></td>
+                <td><button onclick="insert('8')">8</button></td>
+                <td><button onclick="insert('9')">9</button></td>
+                <td><button onclick="insert('/')">÷</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="insert('4')">4</button></td>
+                <td><button onclick="insert('5')">5</button></td>
+                <td><button onclick="insert('6')">6</button></td>
+                <td><button onclick="insert('*')">×</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="insert('1')">1</button></td>
+                <td><button onclick="insert('2')">2</button></td>
+                <td><button onclick="insert('3')">3</button></td>
+                <td><button onclick="insert('-')">−</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="insert('0')">0</button></td>
+                <td><button onclick="insert('.')">.</button></td>
+                <td><button onclick="calculate()">=</button></td>
+                <td><button onclick="insert('+')">+</button></td>
+            </tr>
+            <tr>
+                <td colspan="4"><button onclick="clearInput()">Clear</button></td>
+            </tr>
+        </table>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+I hope this helps! Let me know if you have any further questions.
+
