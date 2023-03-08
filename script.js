@@ -17,6 +17,6 @@ function calculate() {
 	}
 }
 
-function clear() {
+function clearInput() {
 	input.value = '';
 }
