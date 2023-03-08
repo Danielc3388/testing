@@ -1,30 +1,14 @@
-var form = document.getElementById("calculator-form");
+var input = document.getElementById('result');
 
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
+function insert(value) {
+	input.value += value;
+}
 
-  var num1 = Number(document.getElementById("num1").value);
-  var num2 = Number(document.getElementById("num2").value);
-  var operator = document.getElementById("operator").value;
-  var result = 0;
+function calculate() {
+	var result = eval(input.value);
+	input.value = result;
+}
 
-  switch (operator) {
-    case "+":
-      result = num1 + num2;
-      break;
-    case "-":
-      result = num1 - num2;
-      break;
-    case "*":
-      result = num1 * num2;
-      break;
-    case "/":
-      result = num1 / num2;
-      break;
-    default:
-      alert("Invalid operator");
-      break;
-  }
-
-  document.getElementById("result").innerHTML = "Result: " + result;
-});
+function clear() {
+	input.value = '';
+}
