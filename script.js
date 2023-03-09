@@ -34,6 +34,17 @@ function loginWithGoogle() {
     alert('Error logging in with Google. Please try again.');
     return;
   }
+  
+  gapi.auth2.getAuthInstance().signIn().then(function() {
+  // Sign-in successful
+}, function(error) {
+  if (error.error === "popup_closed_by_user") {
+    alert('closed by user')
+  } else {
+    alert('not closed by user')
+  }
+});
+
 
   // Load the Google Sign-In API if it hasn't been loaded yet
   if (!gapi.auth2) {
