@@ -52,7 +52,11 @@ function loginWithGoogle() {
           window.location.href = 'success.html';
         }, function(error) {
           console.error(error);
-          alert('Error logging in with Google. Please try again.');
+          if (error.error === "popup_closed_by_user") {
+            alert('You closed the Google Sign-In popup window. Please try again.');
+          } else {
+            alert('Error logging in with Google. Please try again.');
+          }
         });
       });
     });
@@ -69,8 +73,11 @@ function loginWithGoogle() {
       window.location.href = 'success.html';
     }, function(error) {
       console.error(error);
-      alert('Error logging in with Google. Please try again.');
+      if (error.error === "popup_closed_by_user") {
+        alert('You closed the Google Sign-In popup window. Please try again.');
+      } else {
+        alert('Error logging in with Google. Please try again.');
+      }
     });
   }
 }
-
