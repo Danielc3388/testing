@@ -1,22 +1,45 @@
-var input = document.getElementById('result');
+// Replace YOUR_CLIENT_ID with your Google OAuth client ID
+const CLIENT_ID = 'YOUR_CLIENT_ID';
 
-function insert(value) {
-	input.value += value;
+function loginWithPassword(event) {
+  event.preventDefault();
+  // Get the username and password from the form
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  // Perform authentication logic here...
+  // For this example, we'll just log the username and password to the console
+  console.log(`Username: ${username}, Password: ${password}`);
 }
 
-function calculate() {
-	try {
-		var result = eval(input.value);
-		if (isNaN(result)) {
-			input.value = 'Error';
-		} else {
-			input.value = result;
-		}
-	} catch (error) {
-		input.value = 'Error';
-	}
+function loginWithGoogle() {
+  // Authenticate with Google using the Google Sign-In API
+  gapi.auth2.authorize({
+    client_id: CLIENT_ID,
+    scope: 'profile email'
+  }, function(response) {
+    if (response.error) {
+      console.error(response.error);
+      alert('Error logging in with Google. Please try again.');
+      return;
+    }
+
+    // Get the user's Google profile information
+    const profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+    const name = profile.getName();
+    const email = profile.getEmail();
+
+    // Perform authentication logic here...
+    // For this example, we'll just log the name and email to the console
+    console.log(`Name: ${name}, Email: ${email}`);
+  });
 }
 
-function clearInput() {
-	input.value = '';
+// Load the Google Sign-In API
+function handleClientLoad() {
+  gapi.load('auth2', function() {
+    gapi.auth2.init({
+      client_id: CLIENT_ID
+    });
+  });
 }
