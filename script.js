@@ -20,11 +20,11 @@ function initGoogleAuth() {
     });
   });
 }
+
 // Call initGoogleAuth() once the page has finished loading
 document.addEventListener('DOMContentLoaded', function() {
   initGoogleAuth();
 });
-
 
 function loginWithGoogle() {
   // Check that the gapi.auth2 object is defined
@@ -49,7 +49,3 @@ function loginWithGoogle() {
     alert('Error logging in with Google. Please try again.');
   });
 }
-
-
-
-
