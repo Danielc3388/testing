@@ -13,6 +13,18 @@ function loginWithPassword(event) {
   window.location.href = 'success.html';
 }
 
+function initGoogleAuth() {
+  gapi.load('auth2', function() {
+    gapi.auth2.init({
+      client_id: CLIENT_ID
+    });
+  });
+}
+// Call initGoogleAuth() once the page has finished loading
+document.addEventListener('DOMContentLoaded', function() {
+  initGoogleAuth();
+});
+
 
 function loginWithGoogle() {
   // Check that the gapi.auth2 object is defined
@@ -38,15 +50,6 @@ function loginWithGoogle() {
   });
 }
 
-function initGoogleAuth() {
-  gapi.load('auth2', function() {
-    gapi.auth2.init({
-      client_id: CLIENT_ID
-    });
-  });
-}
 
-// Call initGoogleAuth() once the page has finished loading
-document.addEventListener('DOMContentLoaded', function() {
-  initGoogleAuth();
-});
+
+
