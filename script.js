@@ -27,25 +27,50 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loginWithGoogle() {
-  // Check that the gapi.auth2 object is defined
-  if (!gapi.auth2) {
+  // Check that the gapi object is defined
+  if (!gapi) {
     console.error('Google Sign-In API not loaded or initialized');
     alert('Error logging in with Google. Please try again.');
     return;
   }
 
-  // Authenticate with Google using the Google Sign-In API
-  gapi.auth2.getAuthInstance().signIn().then(function() {
-    // Get the user's Google profile information
-    const profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
-    const name = profile.getName();
-    const email = profile.getEmail();
-
-    // Perform authentication logic here...
-    // For this example, we'll just redirect to a success page
-    window.location.href = 'success.html';
-  }, function(error) {
-    console.error(error);
-    alert('Error logging in with Google. Please try again.');
-  });
+  // Load the Google Sign-In API if it hasn't been loaded yet
+  if (!gapi.auth2) {
+    gapi.load('auth2', function() {
+      gapi.auth2.init({
+        client_id: CLIENT_ID
+      }).then(function() {
+        // Authenticate with Google using the Google Sign-In API
+        gapi.auth2.getAuthInstance().signIn().then(function() {
+          // Get the user's Google profile information
+          const profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+          const name = profile.getName();
+          const email = profile.getEmail();
+          
+          // Perform authentication logic here...
+          // For this example, we'll just redirect to a success page
+          window.location.href = 'success.html';
+        }, function(error) {
+          console.error(error);
+          alert('Error logging in with Google. Please try again.');
+        });
+      });
+    });
+  } else {
+    // Authenticate with Google using the Google Sign-In API
+    gapi.auth2.getAuthInstance().signIn().then(function() {
+      // Get the user's Google profile information
+      const profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+      const name = profile.getName();
+      const email = profile.getEmail();
+      
+      // Perform authentication logic here...
+      // For this example, we'll just redirect to a success page
+      window.location.href = 'success.html';
+    }, function(error) {
+      console.error(error);
+      alert('Error logging in with Google. Please try again.');
+    });
+  }
 }
+
