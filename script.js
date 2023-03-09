@@ -2,7 +2,8 @@
 const CLIENT_ID = '416638786885-hiqcbtrbp09mt3qb1hik9pe8bi8bl5c9.apps.googleusercontent.com';
 
 function loginWithPassword(event) {
-  event.preventDefault();
+  event.preventDefault(); // Prevent the default form submission behavior
+
   // Get the username and password from the form
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
@@ -11,6 +12,7 @@ function loginWithPassword(event) {
   // For this example, we'll just redirect to a success page
   window.location.href = 'success.html';
 }
+
 
 function loginWithGoogle() {
   // Authenticate with Google using the Google Sign-In API
