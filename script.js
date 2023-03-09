@@ -1,5 +1,5 @@
 // Replace YOUR_CLIENT_ID with your Google OAuth client ID
-const CLIENT_ID = '416638786885-hiqcbtrbp09mt3qb1hik9pe8bi8bl5c9.apps.googleusercontent.com';
+const CLIENT_ID = '416638786885-f0bp8690k4age0g6c83k3j3gndn3a0de.apps.googleusercontent.com';
 
 function loginWithPassword(event) {
   event.preventDefault(); // Prevent the default form submission behavior
