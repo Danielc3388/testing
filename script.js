@@ -8,8 +8,8 @@ function loginWithPassword(event) {
   const password = document.getElementById('password').value;
 
   // Perform authentication logic here...
-  // For this example, we'll just log the username and password to the console
-  console.log(`Username: ${username}, Password: ${password}`);
+  // For this example, we'll just redirect to a success page
+  window.location.href = 'success.html';
 }
 
 function loginWithGoogle() {
@@ -30,8 +30,8 @@ function loginWithGoogle() {
     const email = profile.getEmail();
 
     // Perform authentication logic here...
-    // For this example, we'll just log the name and email to the console
-    console.log(`Name: ${name}, Email: ${email}`);
+    // For this example, we'll just redirect to a success page
+    window.location.href = 'success.html';
   });
 }
 
