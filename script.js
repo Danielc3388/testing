@@ -15,6 +15,13 @@ function loginWithPassword(event) {
 
 
 function loginWithGoogle() {
+  // Check that the gapi.auth2 object is defined
+  if (!gapi.auth2) {
+    console.error('Google Sign-In API not loaded or initialized');
+    alert('Error logging in with Google. Please try again.');
+    return;
+  }
+
   // Authenticate with Google using the Google Sign-In API
   gapi.auth2.getAuthInstance().signIn().then(function() {
     // Get the user's Google profile information
