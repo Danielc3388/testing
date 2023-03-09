@@ -1,5 +1,5 @@
 // Replace YOUR_CLIENT_ID with your Google OAuth client ID
-const CLIENT_ID = 'YOUR_CLIENT_ID';
+const CLIENT_ID = '416638786885-hiqcbtrbp09mt3qb1hik9pe8bi8bl5c9.apps.googleusercontent.com';
 
 function loginWithPassword(event) {
   event.preventDefault();
