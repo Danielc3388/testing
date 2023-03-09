@@ -37,9 +37,8 @@ function loginWithGoogle() {
 
 // Load the Google Sign-In API
 function handleClientLoad() {
-  gapi.load('auth2', function() {
-    gapi.auth2.init({
-      client_id: CLIENT_ID
-    });
-  });
+  gapi.load('auth2', function())
+  gapi.auth2.init({
+  client_id: CLIENT_ID
+});
 }
