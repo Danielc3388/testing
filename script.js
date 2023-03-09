@@ -14,16 +14,7 @@ function loginWithPassword(event) {
 
 function loginWithGoogle() {
   // Authenticate with Google using the Google Sign-In API
-  gapi.auth2.authorize({
-    client_id: CLIENT_ID,
-    scope: 'profile email'
-  }, function(response) {
-    if (response.error) {
-      console.error(response.error);
-      alert('Error logging in with Google. Please try again.');
-      return;
-    }
-
+  gapi.auth2.getAuthInstance().signIn().then(function() {
     // Get the user's Google profile information
     const profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
     const name = profile.getName();
@@ -32,13 +23,21 @@ function loginWithGoogle() {
     // Perform authentication logic here...
     // For this example, we'll just redirect to a success page
     window.location.href = 'success.html';
+  }, function(error) {
+    console.error(error);
+    alert('Error logging in with Google. Please try again.');
   });
 }
 
-// Load the Google Sign-In API
-function handleClientLoad() {
-  gapi.load('auth2', function())
-  gapi.auth2.init({
-  client_id: CLIENT_ID
-});
+function initGoogleAuth() {
+  gapi.load('auth2', function() {
+    gapi.auth2.init({
+      client_id: CLIENT_ID
+    });
+  });
 }
+
+// Call initGoogleAuth() once the page has finished loading
+document.addEventListener('DOMContentLoaded', function() {
+  initGoogleAuth();
+});
