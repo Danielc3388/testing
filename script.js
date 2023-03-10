@@ -27,23 +27,30 @@ document.addEventListener('DOMContentLoaded', function() {
   initGoogleAuth();
 });
 
-function loginWithGoogle() {
-  // Check that the gapi object is defined
-  if (!gapi) {
-    console.error('Google Sign-In API not loaded or initialized');
-    alert('Error logging in with Google. Please try again.');
-    return;
-  }
-  
-  gapi.auth2.getAuthInstance().signIn().then(function() {
-  // Sign-in successful
-}, function(error) {
-  if (error.error === "popup_closed_by_user") {
-    alert('closed by user')
-  } else {
-    alert('not closed by user')
-  }
+// Load the Google API script asynchronously
+window.addEventListener('load', function() {
+  gapi.load('auth2', function() {
+    gapi.auth2.init({
+      client_id: 'YOUR_CLIENT_ID'
+    }).then(function() {
+      // Initialization succeeded
+    }, function(error) {
+      // Initialization failed
+    });
+  });
 });
+
+// Handle the sign-in button click event
+function loginWithGoogle() {
+  gapi.auth2.getAuthInstance().signIn().then(function(googleUser) {
+    // Sign-in successful
+    var id_token = googleUser.getAuthResponse().id_token;
+    // Send the ID token to your server for verification
+  }, function(error) {
+    // Sign-in failed
+    console.log(error);
+  });
+}
 
 
   // Load the Google Sign-In API if it hasn't been loaded yet
